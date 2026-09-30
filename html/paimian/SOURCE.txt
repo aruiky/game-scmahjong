@@ -1,0 +1,8 @@
+Tile images in this directory are from:
+https://github.com/samoheen/mahjong-tiles/tree/37a2549fe91687db191014cc426f836df630b1b6/hongkong/png
+
+The source repository states that all files are in the public domain under CC0 1.0.
+See LICENSE-CC0.txt in this directory.
+
+This project uses the 1-9 character, bamboo, and circle tiles. Each of the 27
+faces is copied to four files to match this game's tile IDs 0-107.
