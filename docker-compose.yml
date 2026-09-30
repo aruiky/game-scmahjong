@@ -1,0 +1,32 @@
+services:
+  sichuan-mahjong:
+    image: php:8.5.11-apache
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    environment:
+      MAHJONG_DATA_DIR: /app/data
+      MAHJONG_TIMEZONE: ${MAHJONG_TIMEZONE}
+    ports:
+      - ${PORT_HTTP}:80
+    volumes:
+      - ./html:/project-html:ro
+      - ./data:/app/data
+    command:
+      - sh
+      - -c
+      - |
+        set -eu
+        mkdir -p /var/www/html /app/data
+        cp -R /project-html/. /var/www/html/
+        find /var/www/html -type d -exec chmod 755 {} \;
+        find /var/www/html -type f -exec chmod 644 {} \;
+        chown -R www-data:www-data /var/www/html
+        chown www-data:www-data /app/data
+        if [ -e /app/data/games.json ]; then chown www-data:www-data /app/data/games.json; fi
+        exec apache2-foreground
+    networks:
+      - game
+
+networks:
+  game:
+    external: true
