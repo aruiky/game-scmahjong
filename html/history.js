@@ -100,7 +100,7 @@ function renderHistoryDetail(game) {
         if (!Number.isInteger(tile) || tile < 0 || tile > 107) return;
         const image = document.createElement('img');
         image.className = 'history-winning-tile';
-        image.src = `paimian/${tile}.png`;
+        image.src = `paimian/${Math.floor(tile / 4) * 4}.png`;
         image.alt = `${Math.floor(tile / 4) % 9 + 1}${['万', '条', '筒'][Math.floor(tile / 36)]}`;
         image.title = image.alt;
         tiles.append(image);

@@ -217,7 +217,7 @@ function renderTile(tile, selected = false) {
   const suit = tileSuit(tile);
   const number = tileNum(tile);
   const label = `${number}${SUIT_NAMES[suit]}`;
-  return `<div class="tile ${suit}${selected ? ' selected' : ''}" role="img" aria-label="${label}" title="${label}"><img class="tile-art" src="paimian/${tile}.png" alt="" draggable="false"></div>`;
+  return `<div class="tile ${suit}${selected ? ' selected' : ''}" role="img" aria-label="${label}" title="${label}"><img class="tile-art" src="paimian/${tileRank(tile) * 4}.png" alt="" draggable="false"></div>`;
 }
 
 function renderGameLog() {
